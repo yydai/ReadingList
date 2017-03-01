@@ -7,3 +7,19 @@
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
+
+** 待读：
+ - ES6标准入门(第二版) 阮一峰
+ - Python网络编程
+ - 风格的要素
+ - SQL必知必会
+ - 必然 凯文凯利
+ - 禅与摩托车维修艺术
+ - Effective Python
+ - C程序设计语言
+ - 编程语言实现模式
+ - The definitive antlr4 reference
+ - Mastering Emacs
+ - 数理统计学简史
+
+
