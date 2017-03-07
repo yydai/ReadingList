@@ -1,0 +1,46 @@
+* Writing GNU Emacs Extensions学习笔记
+
+** Chapter 1, Customizing Emacs
+   This chapter introduces basic Emacs customizations, and teaches some Emacs Lisp along the way. 
+
+*** Fully-parenthesized prefix notation
+    All expressions and function calls in Lisp are surrounded by parentheses.
+    "Prefix notation" means that the operator precedes the operands. When the
+    operator is between the operands, it's called "infix notation."
+
+*** Garbage collection
+    Lisp is a garbage-collected language, which means that Lisp itself
+    automatically reclaims the memory used by your program's data structures.
+
+*** Binding Keystrokes to Commands
+    The function global-set-key takes two arguments: the keysequence to bind,
+    and the command to bind it to. 
+
+      (global-set-key keysequence command)==>(global-set-key "\M-?" command)
+
+*** Evaluating Lisp Expressions
+    There are several ways to explicitly evaluate Lisp expressions.
+    1. put the lisp expressions in a file, and then load the file to emacs.
+       You can use the command like this:
+
+       =M-x load-file RET <file-name> RET=
+
+    2. 
+
+    
+
+
+** Chapter 2, Simple New Commands
+
+** Chapter 3, Cooperating Commands
+
+** Chapter 4, Searching and Modifying Buffers
+
+** Chapter 5, Lisp Files
+
+** Chapter 6, Lists
+
+** Chapter 7, Minor Mode
+
+
+   
