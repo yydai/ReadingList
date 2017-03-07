@@ -16,7 +16,7 @@
     The function global-set-key takes two arguments: the keysequence to bind,
     and the command to bind it to. 
 
-      =(global-set-key keysequence command)= ==> =(global-set-key "\M-?" command)=
+    =(global-set-key keysequence command)= ==> =(global-set-key "\M-?" command)=
 
 *** Evaluating Lisp Expressions
     There are several ways to explicitly evaluate Lisp expressions.
@@ -25,12 +25,35 @@
 
        =M-x load-file RET <file-name> RET=
 
-    2. 
+    2. use the command: =eval-last-sexp=, which bound to the C-x C-e
 
+    3. use the *scratch* buffer
+
+*** Apropos
+    Before wrapping up this first example, let's discuss Emacs's most important
+    online help facility, apropos.
     
-
-
 ** Chapter 2, Simple New Commands
+   In this chapter we'll develop several very small Lisp functions and commands.
+
+*** Traversing Windows
+    =C-x o= bound to the function of =other-window= ,moves the cursor from one
+    Emacs window into the next. So I chose C-x C-n for "next window" and C-x C-p
+    for "previous window."
+   
+    =(global-set-key "\C-x\C-n" 'other-window)=
+    
+    Defining a function called other-window-backward
+
+    #+BEGIN_SRC lisp
+    (defun other-window-backward ( )
+      "Select the previous window."
+      (interactive)
+      (other-window -1))
+    #+END_SRC
+
+    (global-set-key "\C-x\C-p" 'other-window-backward)
+
 
 ** Chapter 3, Cooperating Commands
 
