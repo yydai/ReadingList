@@ -16,7 +16,7 @@
     The function global-set-key takes two arguments: the keysequence to bind,
     and the command to bind it to. 
 
-      =(global-set-key keysequence command)= ==> =(global-set-key "\M-?" command)=
+    =(global-set-key keysequence command)= ==> =(global-set-key "\M-?" command)=
 
 *** Evaluating Lisp Expressions
     There are several ways to explicitly evaluate Lisp expressions.
@@ -25,13 +25,19 @@
 
        =M-x load-file RET <file-name> RET=
 
-    2. 
+    2. use the command: =eval-last-sexp=, which bound to the C-x C-e
+
+    3. use the *scratch* buffer
+
+*** Apropos
+    Before wrapping up this first example, let's discuss Emacs's most important
+    online help facility, apropos.
+    
 
     
 
 
 ** Chapter 2, Simple New Commands
-
 ** Chapter 3, Cooperating Commands
 
 ** Chapter 4, Searching and Modifying Buffers
