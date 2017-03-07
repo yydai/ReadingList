@@ -4,23 +4,26 @@
 
 *** 计算机技术
     - 算法笔记 2月
+    - Mastering Emacs 3月
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
 
 ** 待读：
- - ES6标准入门(第二版) 阮一峰
- - Python网络编程
- - 风格的要素
- - SQL必知必会
- - 必然 凯文凯利
- - 禅与摩托车维修艺术
- - Effective Python
- - C程序设计语言
- - 编程语言实现模式
- - The definitive antlr4 reference
- - Mastering Emacs
- - 数理统计学简史
+ 1. ES6标准入门(第二版) 阮一峰
+ 2. Python网络编程
+ 3. 风格的要素
+ 4. SQL必知必会
+ 5. 必然 凯文凯利
+ 6. 禅与摩托车维修艺术
+ 7. Effective Python
+ 8. C程序设计语言
+ 9. 编程语言实现模式
+ 10. The definitive antlr4 reference
+ 11. Writing GNU Emacs Extensions
+ 12. 数理统计学简史
+
+
 
 ============================================================
 

@@ -1,0 +1,138 @@
+* Mastering Emacs 学习笔记
+
+** Chapter 
+*** install
+*** open a file      =emacs -n <filename>=
+*** run emacs in GUI, if at all possible
+*** C-M-%  like the command =query-replace-regexp=
+*** rebinding your =caps= lock key to =control=
+*** M-x Execute Extended Command
+*** discovering and remembering 
+    - you can’t remember the exact command for something, then Emacs can
+      help.Let’s say you can’t remember how to print theparagraph character ¶,
+      but you do remember it’s somewhere in the C-x 8 key map. type C-x 8 C-h
+      will be ok.
+
+
+*** if you want to change emacs, you have two choices:
+**** use the customize interface
+     - M-x customize
+     - M-x customize-themes
+     - more refer =mastering emacs= page of 58
+**** write elisp
+     - evaluating elisp code =M-x eval-buffer=
+**** the package manager
+     - M-x package-list-packages
+*** Help
+**** M-x info
+**** if you want to read up on a specific emacs functionality
+     - C-h i m XXX
+**** apropos
+     C-h a or M-x apropos-command
+** Chapter 4 The Theory of Movement
+*** First remap caps lock to ctrl
+*** C-x s to save each unsaved buffer
+*** Frame management
+**** create a new frame
+     - the perfix key is C-x 5
+     - C-x 5 2 will create a new frame
+*** moving by function
+*** moving by sentence*** moving by paragraph
+*** setting the mark
+    - M-h:mark the next paragraph
+    - C-x h: mark-the-whole buffer
+    - C-M-h: mark the next function
+    - M-@: mark the next word
+** Chapter 5 The Theory of Editing
+*** Transposing Text
+    - C-t transpose characters eg: Before A[cursor]BC --> after: BC[cursor]A
+    - M-t transpose words    hello, world!   world, hello!  
+
+    - C-x C-t transpose lines
+    - C-M-t transpose s-expressions  (/ (+ 2 n)█ (* 4 n))  ---> (/ (* 4 n) (+ 2 n)█)
+*** Filling and commenting
+    - if you want the paragraphs auto break, you should use the fill command
+    - M-q refill the paragraph
+    - C-x f: sets the fill column width
+    - M-; comment or uncomment
+    - C-x C-;
+*** search and replace
+    - C-M-% query regexp search and replace
+*** changing case
+    - C-x C-u  upper cases the region
+    - C-x C-l lower cases the region
+    - M-l lower case the next word
+    - M-u upper case the next word
+    - M-c capitalizes the next word eg: how are you ----How are you
+
+*** text expansion
+    - abbrev
+    - Skeletons
+    - Tempo
+    - YASnippet
+    - Autoinsert
+
+*** Sorting
+    | Command                 | Description                                      |
+    |-------------------------+--------------------------------------------------|
+    | M-x sort-lines          | Sorts alphabetically                             |
+    | M-x sort-fields         | Sorts field(s) lexicographically                 |
+    | M-x sort-numeric-fields | Sorts field(s) numerically                       |
+    | M-x sort-regexp-fields  | Sorts by regexp-defined fields lexicographically |
+    
+
+      $3.50,Cappuccino
+      $4.00,Caramel Latte
+      $2.00,Americano
+     
+      $2.00,Americano
+      $3.50,Cappuccino
+      $4.00,Caramel Latte   
+*** Aligning(p226)
+    UNIVERSE_ANSWER_CONST = 42
+    UNIVERSE_QUESTION     = "What is The Answer ..."
+
+
+    To columnate the text and align the prices on the $ with M-x align-regexp:
+    Align regexp: \$
+
+    Cappuccino $2.00
+    Caramel Latte $2.
+    Americano $3.50
+
+    Cappuccino    $2.00
+    Caramel Latte $2.30
+    Americano     $3.50
+    Macchiato     $4.00
+
+
+
+** Chapter 6 The practise of Emacs 
+
+**** The Remote file editing(p253)
+     - tramp
+** Chapter 7 Conclusion
+
+*** Other resources   
+    - reddit /r/emacs
+    - StackExchange http://emacs.stackexchange.com/
+    - Freenode
+    - Blogs 
+      - http://sachachua.com/blog/
+      - Irreal’s Emacs blog http://irreal.org/blog/
+      - Artur Malabarba http://endlessparentheses.com/
+      - http://www.lunaryorn.com/
+      - http://batsov.com/
+      - http://kitchingroup.cheme.cmu.edu/blog/
+
+
+
+
+
+
+      
+
+     
+
+
+
