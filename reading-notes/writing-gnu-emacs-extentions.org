@@ -221,19 +221,78 @@
     #+END_SRC
     
     This function tests whether current buffer's file is symlink.
-    - The function file-symlink-p tests whether its argument, which is a string naming a file, refers to a symbolic link.
-    - If buffer-file-name does refer to a symlink, there are two things we want to do:
+    - The function =file-symlink-p= tests whether its argument, which is a string naming a file, refers to a symbolic link.
+    - If =buffer-file-name= does refer to a symlink, there are two things we want to do:
       make the buffer read-only, and display a message.
     - A =progn= expression evaluates each of its subexpressions in order and returns the value of the last one.
 
-    Now that we've defined read-only-if-symlink, we can call
+    Now that we've defined =read-only-if-symlink=, we can call
+
     #+BEGIN_SRC lisp
     (add-hook 'find-file-hooks 'read-only-if-symlink)
     #+END_SRC
     to add it to the list of functions that are called whenever a new file is visited.
 
 *** Anonymous Functions
+
+    If the function won't ever be called from anywhere else, the better way is
+    to define a function without giving it a name. Such functions are known as 
+    anonymous functions.
+    #+BEGIN_SRC lisp
+
+    #+END_SRC
+    so:
+    #+BEGIN_SRC lisp
+    (add-hook 'find-file-hooks
+      '(lambda ()
+        (if (file-symlink-p buffer-file-name)
+            (progn
+               (setq buffer-read-only t)
+               (message "File is a symlink")))))
+    #+END_SRC
     
+    Now only find-file-hooks has access to the function; on other code is able to call it.
+
+    There's one reason not to use anonymous functions in hooks. IF you ever wish to remove a function from a hook,
+    you need to refer to it by name in a call to remove-hook, like so:
+
+    #+BEGIN_SRC lisp
+       (remove-hook 'find-file-hooks 'read-only-if-symlink)
+    #+END_SRC
+*** Handing the symlink
+    When Emacs alerts me that I'm editing a symlink, I may wish to replace the buffer with one visiting the 
+    target of the link instead; or I may wish to "clobber" the symlink and visit that.
+    
+    #+BEGIN_SRC lisp
+    (defun visit-target-instead()
+      "Replace this buffer with a buffer visiting the link target."
+      (interactive)
+      (if buffer-file-name
+          (let ((target (file-symlink-p buffer-file-name)))
+            (if target
+                (find-alternate-file target)
+                (error "Not visiting a symlink")))
+          (error "Not visiting a file")))
+
+     (defun clobber-symlink()
+        "Replace symlink with a copy of the file."
+        (interactive)
+        (if buffer-file-name
+            (let ((target (file-symlink-p buffer-file-name)))
+            (if target
+                (if (yes-or-no-p (format "Replace %s with %s?"
+                                         buffer-file-name
+                                         target))
+                    (progn
+                    (delete-file buffer-file-name)
+                    (write-file buffer-file-name)))
+                 (error "Not visiting a file")))
+    #+END_SRC
+
+
+    To be continue...(P35)
+
+
 
 
 ** Chapter 2, Simple New Commands
