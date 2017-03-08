@@ -52,7 +52,98 @@
       (other-window -1))
     #+END_SRC
 
-    (global-set-key "\C-x\C-p" 'other-window-backward)
+    =(global-set-key "\C-x\C-p" 'other-window-backward)=
+
+*** Parameterizing Other-window Backward
+    This keybinding does what we need, but we can improve on it a bit. Now, we
+    will a parameter of n to the function. If we want to pass a parameter to it,
+    we can use =C-u <parameter> C-x C-n=. For example, C-u 2 C-x C-n means "move
+    to the second window following this one."
+    
+    #+BEGIN_SRC lisp
+    (defun other-window-backward(n)
+      "Select Nth previous window."
+      (interactive "p")
+      (other-window (- n)))
+    #+END_SRC
+
+    An =interactive= command is a kind of Lisp function. That means that the
+    command may take arguments. Passing arguments to a function from lisp is
+    easy. but what if the function is invoked as an interactive command? Where
+    do the arguments come from then? Answering this question is the purpose of
+    the =interactive= declaration. The code letter ="p"= used in this example
+    means, "if there is a prefix argument, interpret it as a number, and if
+    there is no prefix argument, interpret that as the number 1."
+
+*** Making the Argument Optional
+    #+BEGIN_SRC lisp
+     (defun other-window-backward (&optional n)
+       "Select Nth previous window."
+       (interactive "p")
+       (if n
+       (other-window (- n)) ;if n is non-nil
+       (other-window -1))) ;if n is nil
+
+    #+END_SRC
+
+    The keyword &optional appearing in a parameter list means that all
+    subsequent parameters are optional.
+    
+    we can rewriten the exp to this:
+    =(other-window (if n (- n) -1))=, and more better is this:
+    =(other-window (- (if n n 1)))=
+
+*** Logical Expressions   
+     An old Lisp programmers' trick can now be used to make this expression even
+     more concise:
+     =(if n n 1)= == =(or n 1)=
+     
+     Lisp's =or= has an extra bit of usefulness: it evaluates each of its
+     arguments in order until it finds one that's non-nil, then it returns that
+     value. If it doesn't find one, it returns =nil=.
+
+     #+BEGIN_SRC lisp
+       (if a a                                 ;; if a is true, return a
+         (if b b                               ;; else if b is true, return b
+           ...
+             (if y y z)))                      ;; else if y is true, return y, else z
+     #+END_SRC
+     can be changed to the following form.
+     #+BEGIN_SRC lisp
+     (or a b ... y z)
+     #+END_SRC
+
+     Similarly,
+     #+BEGIN_SRC lisp
+     (if a
+       (if b
+         ...
+           (if y z)))
+     #+END_SRC
+     can be also written as
+     #+BEGIN_SRC lisp
+     (and a b ... y z)
+     #+END_SRC
+     also:
+     =(if (and a b ... y) z)= == =(and a b ... y z)=, but the first one is more better to read for human.
+
+*** The better other-window-backward
+    #+BEGIN_SRC lisp
+     (defun other-window-backward (&optional n)
+       "Select Nth previous window."
+       (interactive "p")
+       (other-window (- (or n 1)))
+    #+END_SRC
+
+    But the best definition of all-the most Emacs-Lisp like-turns out to be:
+    #+BEGIN_SRC lisp
+    (defun other-window-backward (&optional n)
+      "Select Nth previous window."
+      (interactive "P")
+      (other-window (- (prefix-numberic-value n))))
+    #+END_SRC
+    where =prefix-numberic-value= is a build-in function.
+
 
 
 ** Chapter 2, Simple New Commands
