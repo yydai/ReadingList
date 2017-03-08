@@ -239,7 +239,11 @@
     to define a function without giving it a name. Such functions are known as 
     anonymous functions.
     #+BEGIN_SRC lisp
-
+    (lambda ()
+        (if (file-symlink-p buffer-file-name)
+            (progn
+               (setq buffer-read-only t)
+               (message "File is a symlink"))))
     #+END_SRC
     so:
     #+BEGIN_SRC lisp
@@ -263,6 +267,21 @@
     When Emacs alerts me that I'm editing a symlink, I may wish to replace the buffer with one visiting the 
     target of the link instead; or I may wish to "clobber" the symlink and visit that.
     
+=======
+    
+    Now only find-file-hooks has access to the function; on other code is able to call it.
+
+    There's one reason not to use anonymous functions in hooks. IF you ever wish to remove a function from a hook,
+    you need to refer to it by name in a call to remove-hook, like so:
+
+    #+BEGIN_SRC lisp
+       (remove-hook 'find-file-hooks 'read-only-if-symlink)
+    #+END_SRC
+*** Handing the symlink
+    When Emacs alerts me that I'm editing a symlink, I may wish to replace the buffer with one visiting the 
+    target of the link instead; or I may wish to "clobber" the symlink and visit that.
+    
+>>>>>>> learn the book of wgee
     #+BEGIN_SRC lisp
     (defun visit-target-instead()
       "Replace this buffer with a buffer visiting the link target."
