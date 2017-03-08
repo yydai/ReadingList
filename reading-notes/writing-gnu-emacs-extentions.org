@@ -136,14 +136,104 @@
     #+END_SRC
 
     But the best definition of all-the most Emacs-Lisp like-turns out to be:
+
     #+BEGIN_SRC lisp
     (defun other-window-backward (&optional n)
       "Select Nth previous window."
       (interactive "P")
       (other-window (- (prefix-numberic-value n))))
     #+END_SRC
+
     where =prefix-numberic-value= is a build-in function.
 
+    You should notice the ="P"= instead of ="p" in previoud version. The capital
+    P means "when called interactively, leave the prefix argument in raw form
+    and assign it to n." Where =prefix-numberic-value= is a build-in function.
+
+*** Other Cursor and Text Motion Commands
+    Here are a few more easy commands with their suggested keybindings.
+
+    #+BEGIN_SRC lisp
+    (defun point-to-top()
+      "Put point on top line of window."
+      (interactive)
+      (move-to-window-line 0))
+
+    (global-set-key "\M-," 'point-to-top)
+
+    (global-set-key "\C-x," 'tags-loop-continue)
+    #+END_SRC
+
+    The next function makes the cursor jump to the bottom left of the window it's in.
+    #+BEGIN_SRC lisp
+    (defun point-to-bottom()
+      "Put point at the beginning of last visible line."
+      (interactive)
+      (move-to-window-line -1))
+
+    (global-set-key "M-." 'point-to-bottom)
+    #+END_SRC
+
+    This command scrolls the window so that whichever line the cursor is one
+    becomes the top line in the window. The keybinding replaces =shell-command=
+
+    #+BEGIN_SRC lisp
+    (defun line-to-top()
+      "Move current line to top of window."
+      (interactive)
+      (recenter 0))
+    (global-set-key "\M-!" 'line-to-top)
+    #+END_SRC
+    
+*** Clobbering Symbolic Links
+   So far, the function we've written have been very simple. Let's look at an example now where more programming is required.
+
+   In UNIX, a symbolic link, or symlink, is a file that refers to another file
+   by name. When you ask for the contens of a symlink, you actually get the
+   contents of the real file named by the symlink.
+
+   Suppose you visit a file in Emacs that is really a symlink to some other
+   file. You make some changes and Press =C-x C-s= to save the buffer. What
+   should Emacs do?
+    1. Replace the symbolic link with the edited version of the file, breaking the link but leaving the original link target alone.
+    2. Overwrite the file pointed to by the symbolic link.
+    3. Prompt you to choose one of the above actions.
+    4. Something else altoge
+
+   Here's what I do: when I visit a file that's really a symlink, I have Emacs
+   automatically make the buffer read-only. This causes a "Buffer is read-only"
+   error as soon as I try to change anything in the buffer. Then I choose how to
+   proceed using one of two special commands I've designed.
+
+*** Hooks
+    For Emacs to make the buffer read-only when I first visit the file, I have
+    to somehow tell Emacs, "execute a certern piece of Lisp code whenever I
+    visit a file." The action of visiting a file should trigger a function I
+    write. This is where hooks come in.
+
+    The function =add-hook= adds a function to a hook variable. Here's a function to add to =find-file-hooks=:
+    #+BEGIN_SRC lisp
+    (defun read-only-if-symlink()
+      (if (file-symlink-p buffer-file-name)
+          (progn
+            (setq buffer-read-only t)
+            (message "File is a symlink"))))
+    #+END_SRC
+    
+    This function tests whether current buffer's file is symlink.
+    - The function file-symlink-p tests whether its argument, which is a string naming a file, refers to a symbolic link.
+    - If buffer-file-name does refer to a symlink, there are two things we want to do:
+      make the buffer read-only, and display a message.
+    - A =progn= expression evaluates each of its subexpressions in order and returns the value of the last one.
+
+    Now that we've defined read-only-if-symlink, we can call
+    #+BEGIN_SRC lisp
+    (add-hook 'find-file-hooks 'read-only-if-symlink)
+    #+END_SRC
+    to add it to the list of functions that are called whenever a new file is visited.
+
+*** Anonymous Functions
+    
 
 
 ** Chapter 2, Simple New Commands
