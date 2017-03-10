@@ -5,6 +5,8 @@
 *** 计算机
     - 算法笔记 2月
     - Mastering Emacs 3月
+    - Writing GNU Emacs Extensions 3月
+
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
@@ -23,9 +25,9 @@
  9. 编程语言实现模式
  10. 禅与摩托车维修艺术
  11. The definitive antlr4 reference
- 12. Writing GNU Emacs Extensions
- 13. SICP
- 14. ES6标准入门(第二版) 阮一峰
+ 12. SICP
+ 13. ES6标准入门(第二版) 阮一峰
+
 
 
 
