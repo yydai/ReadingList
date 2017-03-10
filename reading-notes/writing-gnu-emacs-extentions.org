@@ -264,8 +264,9 @@
        (remove-hook 'find-file-hooks 'read-only-if-symlink)
     #+END_SRC
 *** Handing the symlink
-    When Emacs alerts me that I'm editing a symlink, I may wish to replace the buffer with one visiting the 
-    target of the link instead; or I may wish to "clobber" the symlink and visit that.
+    When Emacs alerts me that I'm editing a symlink, I may wish to replace the
+    buffer with one visiting the target of the link instead; or I may wish to
+    "clobber" the symlink and visit that.
 
     #+BEGIN_SRC lisp
     (defun visit-target-instead()
@@ -294,21 +295,257 @@
     #+END_SRC
 
 
+
     To be continue...(P35)
-
-
-
-
-** Chapter 2, Simple New Commands
+*** Temporary variables
+    In elisp, temporary variables are created with =let=, whose syntax is:
+    #+BEGIN_SRC lisp
+    (let ((var1 value1)
+          (var2 value2)
+          ...
+          (varn valuen))
+     body1 body2 ...bodyn)
+    #+END_SRC
+    
 ** Chapter 3, Cooperating Commands
+   This chapter shows how to get different commands to work together by saving
+   information in one command and retrieving it in another.
+*** The Symptom
+    When you do some commands like scroll-down and scroll-up, maybe you will
+    lose the cursor point before.
+
+*** Declaring Variables    
+    We'll start by setting up a global variable, =unscroll-to=, which will hold
+    the "undo" information, which is simply the position in the buffer to which
+    unscroll should move the cursor.
+
+    #+BEGIN_SRC lisp
+    (defvar unscroll-to nil
+       "Text position for next call to 'unscroll'.")
+    #+END_SRC
+
+    - Using =defvar= allows a docstring to be associated with the variable, in
+      the same way that =defun= allows a docstring to be associated with a
+      function. =defvar= is different from setting a variable's value with =setq=.
+      =defvar= assigns the value only if the variable does not yet have any value.
+    - A variable declaration using =defvar= can be found by the various
+      =tag-related= commands. Emacs's tag facilities, such as the =find-tag=
+      command, can find anything created with the def ... function(defun,
+      defalias, defmacro, defsubst, defconst, defadvice)
+
+*** Saving and Restoring Point     
+    #+BEGIN_SRC lisp
+    (defadvice scroll-up (before remember-for-unscroll
+                          activate compile)
+                          "Remeber where we started from, for 'unscroll'."
+
+    (if (not (eq last-command 'scroll-up))
+         (setq unscroll-to (point))))
+
+    #+END_SRC
+
+    #+BEGIN_SRC lisp
+    (defun unscroll ()
+       "Jump to location specified by 'unscroll-to'."
+       (interactive)
+       (goto-char unscroll-to))
+    #+END_SRC
+
+    The function goto-char moves the cursor to the given position.
+
+*** Window Appearace
+    Since our goal is to minimize the disruption caused by unintended scrolling,
+    we'd really like to restore not only the location of the cursor, but also
+    the appearace of the window with respect to which lines ares visible where.
+
+    Saving the value of point is no longer sufficient, therefore. We must also save a
+    value representing what's visible in the current window. Emacs's provides several
+    functions describing what's visible in a window, such as =window-edges=,
+    =window-height=, and =current-window-configuration=. For now we'll only use
+    =window-start=. 
+
 
 ** Chapter 4, Searching and Modifying Buffers
+   There will be lots of times when you want to search through a buffer for a
+   string, perhaps replacing it with something else. In this chapter we'll show
+   a lot of powerful ways to do this.
+*** Inserting the Current Time   
+    #+BEGIN_SRC lisp
+    (defun insert-current-time ()
+      "Insert the current time"
+      (interactive "*")
+      (insert (current-time-string)))
+    #+END_SRC
+    
+*** User Options And Doctrings
+    First we'll define the variable.
+    #+BEGIN_SRC lisp
+    (defvar insert-time-format "%X"
+       "*Format for \\[insert-time] (c.f. format-time-string').")
+
+    (defvar insert-data-format "%x"
+       "*Format for \\[insert-date] (c.f. 'format-time-string').")
+    #+END_SRC
+
+    - First, each begins with an asterisk(*). A leading asterisk has a special
+      meaning in =defvar= doctring. It means that ...(page 54)
+    - =\\[command]= ... (page 54)
+
+*** More Asterisk Magic
+    #+BEGIN_SRC lisp
+    (interactive "*")
+    #+END_SRC
+
+    The asterisk, when it is the first character in an =interactive= argument,
+    means "abort this function if the current buffer is read-only." It is better
+    to detect a read-only buffer before a function begins its work than to let
+    it get halfway through then die from a "Buffer is read-only" error.
+
+
+*** Updating Writestamps    
+    The first thing we'll need is a way to run our writestemp-updating code each
+    time the file is saved. As we discovered in the section "Hooks" in Chapter2.
+    Using =M-x apropos RET hook RET=, we discover four promising hook variable:
+    =after-save-hook=, =local-write-file-hooks=, =write-contents-hooks=, and
+    =write-file-hooks=.
+
+    #+BEGIN_SRC lisp
+    (add-hook 'local-write-file-hooks 'update-writestemps)
+    (defun update-writestemps()
+       "Find writestemps and replace them with the current time."
+       (save-excursion
+         (save-restriction
+           (save-match-data
+             (widen)
+             (goto-char (point-min))
+             (while (search-forward "WRITESTAMP((" nil t)
+               (let ((start (point)))
+                  (search-forward "))")
+                  (delete-region start (- (point) 2))
+                  (goto-char start)
+                  (insert-date)))))))
+    #+END_SRC
 
 ** Chapter 5, Lisp Files
+   Up to now, most of the Emacs Lisp we've written has been suitable for
+   incusion in your =.emacs= file. The alternative is to put Emacs Lisp code
+   into files separated by functionality.
 
-** Chapter 6, Lists
+   - Code in =.emacs= is always executed when =Emacs= starts up, even if it is never needed in a
+     given session.
+   - Code in =.emacs= typically isn't =byte-compiled=. =Byte-compiling= is the process of turning
+     Emacs Lisp into a more efficient form that load faster, runs faster, and use less memory.
+     This file usually have names ending in =.elc=.
 
-** Chapter 7, Minor Mode
+*** Creating a Lisp File
+    First, we create =timestamp.el=.
+    Don't include the calls to =add-hook= or =make-local-hook= yet. We'll get to those later.
+*** Loading the File
+    There are many ways to load Lisp files in Emacs: interactively,
+    non-interactively, explicitly, implicitly, and with and without
+    
+*** Finding Lisp Files
+    Emacs can load files based on full path names such as =/usr/.../foo.el=,
+    but it is usually more convenient to use only a file's base name, =foo.el=,
+    and let Emacs find it among the directories in the =loadpath=. The load path
+    is simply a list of directories that Emacs searches for files to load. Emacs's
+    load path is stored a list of strings in the Lisp variable =load-path=.
 
+    To add a directory to the beginning of =load-path=, use
+    #+BEGIN_SRC lisp
+    (setq load-path
+          (cons "/your/directory/here"
+                load-path))
 
-   
+     (setq load-path
+           (append load-path ("your/directory/here")))
+    #+END_SRC
+*** Interactice Loading
+
+    two commands:
+    =load-file=, =load-library=
+    =M-x load-file RET=
+
+*** Explicit Loading
+    #+BEGIN_SRC lisp
+    (load "lazy-lock")
+    #+END_SRC
+    search load-path for =lazy-lock=, =lazy-lock.el=, =lazy-lock.elc=
+
+*** Conditional Loading
+    When =n= different pieces of Lisp code want to load a particular file, two
+    Emacs Lisp functions, =require= and =provide=, give a way to make sure it
+    only gets loaded once instead of =n= times.
+
+    Emacs makes the feature concept explict. Features are named by Lisp symbols,
+    declared with =provide=, and requested by =require=.
+
+    Here's how it works. First=, we'll choose a symbol to stand for the feature
+    provided by the file =timestamp.el=. Let's use the obvious one, =timestamp=.
+
+    We indicate that =timestamp.el= provides the feature =timestamp= by writing
+    #+BEGIN_SRC lisp
+    (provide 'timestamp)
+    #+END_SRC
+
+    in =timestamp.el=. Normally this appears at the very end of the file.
+
+    Now suppose that somewhere, there's some code that needs the =timestamp=
+    functionality. Using =require= like this:
+    #+BEGIN_SRC lisp
+    (require 'timestamp "timestamp")
+    #+END_SRC
+    
+    also, We can write with:
+    #+BEGIN_SRC lisp
+    (require 'timestamp)
+    #+END_SRC
+    
+*** Autoloading
+    With autoloading, you can arrange to defer loading a file until it's
+    needed-that is, until you call one of its functions.
+
+    Here's how it's used:
+    #+BEGIN_SRC lisp
+    (autoload 'insert-time "timestamp")
+    (autoload 'insert-date "timestamp")
+    #+END_SRC
+
+    The first time any of the functions =insert-time=, =insert-data= is called,
+    Emacs loads =timestamp=. Not only will this cause the inoked function to get
+    defined, but it will define the other one as well, so subsequent calls to 
+    these functions won't reload =timestamp=
+    
+*** Compiling the File
+    =M-x byte-compile-file RET file.el RET=
+
+*** eval-after-load
+
+    If you'd like to defer the execution of some code until a particular file has been loaded, 
+    =eval-after-load= is the way to do it.  For example, suppose you came up with a better
+    definition for =dired-sort-toggle= than the one that's in dired. You couldn't simply put
+    your version into your =.emacs=, because the first time you edit =dired-sort-toggle-, which
+    will wipe out your definition. What you could do instead is:
+    #+BEGIN_SRC lisp
+    (eval-after-load
+      "dired"
+      (defun dired-sort-toggle ()
+      ...))
+    #+END_SRC
+
+    Another use for =eval-after-load= is when you need to refer to a variable, function, or keymap in a
+    package. (see page 80)
+
+    To be continue ...
+
+** Chapter 6. Lists
+
+** Chapter 7. Minor Mode
+
+** Chapter 8. Evaluation and Error Recovery
+
+** Chapter 9. A Major Mode
+
+** Chapter 10. A Comprehensive Example
+
+** Chapter 11. Conclusion
