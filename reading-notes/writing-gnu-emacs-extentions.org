@@ -1,4 +1,4 @@
-* Writing GNU Emacs Extensions学习笔记
+* Writing GNU Emacs Extensions
 
 ** Chapter 1, Customizing Emacs
    This chapter introduces basic Emacs customizations, and teaches some Emacs Lisp along the way. 
