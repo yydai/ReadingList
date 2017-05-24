@@ -1,0 +1,11 @@
+* TODO The book
+  DEADLINE: <2017-04-30 Sun> SCHEDULED: <2017-04-05 Wed>
+Before read this book, you should know:
+- This book follows a learn-by-doing approach.
+- When you finish this book you will be able to design and implement
+  recommendation systems for websites using Python or any language you
+  know
+
+** WAITING Chapter 1                                                            :WAITING:
+
+** TODO Chapter 2

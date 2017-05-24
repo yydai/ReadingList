@@ -1,0 +1,273 @@
+* 这部分主要是学习elisp的笔记
+http://smacs.github.io/elisp/
+
+
+#+BEGIN_SRC elisp
+;; emacs 有模拟的 Common Lisp 的库 cl
+;; elisp 包中使用这两个宏，只要在文件头写上：
+;; (eval-when-compile
+;;   (require 'cl))
+
+
+;; 函数定义, 为全局的
+(defun hello (name)
+  "Say hello to someone"
+  (message "Hello %s" name))
+(hello "Ying")
+
+;; 变量赋值
+(setq foo "I'm foo.")
+(message foo)
+
+;; defvar 不会改变已经有值得变量，同时还可以添加文档字符串
+(defvar foo "Did I have a value?"
+  "A demo variable")
+foo ;; still is "I'm foo"
+
+;; let 局部变量, area default is nil and pi is 3.14
+;; 还有一点变量的使用不要超出let的作用域，否则提示未定义
+(defun circle-area (radix)
+  (let ((pi 3.14)
+        area)
+    (setq area (* pi radix radix))
+    (message "直径为 %.2f 的圆面积是 %.2f" radix area)))
+(circle-area 3)
+
+;; let* 和 let 用法一样唯一的区别是，可以使用前面已经声明的变量
+(defun circle-area2 (radix)
+  (let* ((pi 3.14)
+         (area (* pi radix radix)))
+    (message "直径为 %.2f 的圆面积是 %.2f" radix area)))
+(circle-area2 3)
+
+
+;; lambda 使用其实和 defun 一样
+(lambda (arguments-list)
+  "doc"
+  body)
+;;调用的方法
+(funcall (lambda (name)
+           (message "Hello %s" name)) "Emacser")
+;; 可以把 lambda 表达式赋值给一个变量，然后用 funcall 调用
+(setq foo (lambda (name)
+            (message "hello %s" name)))
+(funcall foo "Emacser")
+
+
+
+;; 控制结构
+;; (progn A B C ...) 让表达式顺序执行，let 也可以, A B C 为表达式
+
+;; 条件判断
+;; (if condition
+;;     then
+;;   else)
+(defun my-max (a b)
+  (if (> a b)
+      a
+    b))
+(my-max 2 3)
+
+;; cond
+;; (cond (case1 do-when-case1)
+;;       (case2 do-when-case2)
+;;       (case3 do-when-case3)
+;;       .
+;;       .
+;;       (t do-when-none-meet))
+(defun fib (n)
+  (cond ((= n 0) 0)
+        ((= n 1) 1)
+        (t (+ (fib (- n 1))
+              (fib (- n 2))))))
+(fib 10) ;; 55
+
+
+;; when unless
+;;(when condition a b c)
+(when (not (< 1 3))
+  (message "Not equal"))
+
+;; 循环
+;; (while condition
+;;   body)
+(defun factorial (n)
+  "求阶乘"
+  (let ((res 1))
+    (while (> n 1)
+      (setq res (* res n)
+            n (- n 1)))
+    res)) ;; return res
+(factorial 10)
+
+;; 逻辑 and not or
+;; (or (= 1 2) (= 2 3))
+;; or 一般可以设置默认值 and 用于参数检查
+(defun hello-world (&optional name)
+  (or name (setq name "Emacser"))
+  (message "Hello, %s" name))           ; => hello-world
+(hello-world)                           ; => "Hello, Emacser"
+(hello-world "Ye")
+
+
+;; ===========数字=============
+;; Emacs 数字分为整数和浮点数
+;; 范围可以从 most-positive-fixnum
+;; most-negative-fixnum
+;;(setq uu '(1 . 2))
+;;(cdr uu) (car uu)
+
+;; 可以多进制输入一个整数
+#b101100 => 44      ; 二进制
+#o54 => 44          ; 八进制
+#x2c => 44          ; 十进制
+
+
+;; 1500
+1500.0
+15e2
+15.0e2
+1.5e3
+
+;; 测试函数, 以p结尾，代表 predicate
+(integerp 1.)
+(floatp 1.)
+(floatp -0.0e+NaN)
+(numberp 1)
+(zerop 1)
+
+;; 数的比较 没有 += /= ...
+;; 浮点数比较相等不能用
+(= a b)
+(= 1 1.0)
+(eql 1.0 1)
+
+
+;; 数字的转换
+truncate
+floor
+ceiling
+round
+
+;; 数的运算
+(setq foo 10)
+(setq foo (1+ foo)) ;; 1+ 类似 ++
+(setq foo (1- foo)) ;; 1- 类似 --
+(abs 1)
+(sin 11)
+(cos)
+(tan)
+(asin)
+(acos)
+(atan)
+(sqrt)
+;; exp log
+(random t);; 产生随机数
+;; 位运算
+
+
+
+
+;; =============字符和字符串=========
+;; 控制字符，退格、制表符，换行符，垂直制表符，换页符，空格，回车，删除和 escape 表示为 ?\a, ?\b, ?\t, ?\n, ?\v, ?\f, ?\s, ?\r, ?\d, 和 ?\e。
+
+(setq foo "")
+?A ;;代表字符 'A'
+?B ;;
+;; 你可以用 \M- 代表 meta 键，加上修饰的字符就是新生成的字符。比如：?\M-A, ?\M-\C-b. 后面这个也可以写成 ?\C-\M-b。
+?\M-A
+
+;; 测试函数
+stringp
+string-or-nil-p
+char-or-string-p ;; 是否是字符串或者字符类型
+(defun string-emptyp (str)
+  (not (string< "" str)))
+(string-emptyp "")
+
+;; 构造函数
+(make-string 1 ?x)
+(string ?a)
+
+;; substring
+(substring "fjajfiejfie" 3)
+(substring "abcdef" 1 3)
+(substring "abc" -2 -1)
+
+;; concat
+(concat "a" "b")
+
+;; 比较 string= string-equal
+;; char-equal
+;; string< string-less 没有string>
+
+;; 转换函数
+(string-to-number "245")
+(number-to-string 222)
+
+;; 转换成2进制
+(defun number-to-bin-string (number)
+  (require 'calculator)
+  (let ((calculator-output-radix 'bin)
+        (calculator-radix-grouping-mode nil))
+    (calculator-number-to-string number)))
+(number-to-bin-string 256)
+
+;; vconcat 把字符转换为向量
+(vconcat "abc")
+
+;; append 可以把字符串转换为列表
+(append "abc" nil)
+
+;; 大小写 downcase upcase
+;; capitalize 第一个字符大写，其他小写
+(upcase-initials "abc bbc")
+(capitalize "abc bbc")
+
+;; format %s
+(format "%s--%s" "aa" "bb")
+
+;; 查找 替换，要了解正则表达式
+(string-match "34" "1234")
+(progn
+  (string-match "3\\(4\\)" "23456723456789")
+  (match-data))
+
+;; 查找 34所有出现的位置
+(let ((start 0))
+  (while (string-match "34" "01234567890123456789" start)
+    (princ (format "find at %d\n" (match-beginning 0)))
+    (setq start (match-end 0))))
+
+
+;; 替换 replace-match
+;; replace-regexp-in-string
+
+
+;; ============== cons cell 和 列表 =============
+
+;; cons cell 是一种基本的数据类型，他有两个顺序的元素
+;; 第一个是 CAR, 第二个是 CDR
+;; 用 . 分开
+
+'(1 . 2) ;; ' 号其实是一个特殊的函数 quote，它的作用是将它的参数返回而不作求值。eval-last-sexp
+
+;; 测试函数
+(consp '(1 . 3))
+(listp '(1 . 3))
+
+;; 构造函数
+(cons 1 2)
+(cons 1 '())
+(setq foo '(a b))
+(cons 'x foo)
+(push 'x foo) ;; 改变 foo
+foo
+(list 1 2 3)
+'((+ 1 2) 3)                            ; => ((+ 1 2) 3)
+(list (+ 1 2) 3)                        ; => (3 3)
+
+#+END_SRC
+
+continue:
+http://smacs.github.io/elisp/05-cons-cell.html

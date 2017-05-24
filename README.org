@@ -1,7 +1,10 @@
 * Reading List(From 2017)
 
 ** 在读
-   - ...
+   - 必然 凯文凯利
+   - Machine Learning by Ng
+   - Emacs Lisp 简明教程
+
 
 ** 2017年
 
@@ -9,7 +12,6 @@
     - 算法笔记 2月
     - Mastering Emacs 3月
     - Writing GNU Emacs Extensions 3月
-
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
@@ -30,8 +32,9 @@
  11. The definitive antlr4 reference
  12. SICP
  13. ES6标准入门(第二版) 阮一峰
-
-
+ 14. A Programmer's Guide to Data Mining
+ 15. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
+ 16. 尽管去做-无压力工作的艺术(Get things done)
 
 
 

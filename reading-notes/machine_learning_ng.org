@@ -1,0 +1,277 @@
+* Machine Learning学习笔记
+
+  课程为Andrew Ng在Coursera的课程
+
+** Week 1
+   DEADLINE: <2017-04-09 Sun 22:00> SCHEDULED: <2017-04-07 Fri 12:00>
+*** Introduction
+    This part will introduce the core idea of teaching a computer to learn concepts using data.
+**** what is Machine Learning
+     - Arthur Samuel(1959). Machine Learning: Field of study that
+       gives computers the ability to learn without being explicitly programmed.
+     - Tom Michell(1998) Well-posed Learning problem: A computer
+       program is said to learn from experience =E= with respect to some
+       task =T= and some performance measure =P=, if its performance on =T=,
+       as measured by =P=, improves with experience =E=.也就是说一个好学习
+       问题定义如下，他说，一个程序被认为能从经验E中学习，解决任务T,达
+       到性能度量P,当且仅当有了经验E后，经过P评判，程序处理T时的性能有所提升。
+
+       例如在西洋棋的例子中，经验e就是程序下上万次的自我练习的经验，而
+       任务t就是下棋。性能度量值p，就是在与一些新的对手比赛时，赢得比
+       赛的概率。
+
+     - eg: Suppose your email program watches which emails you do or
+       do not mark as spam, and based on that learns how to better
+       filter spam. What is the task T in this setting?
+       - Classifing emails as spam or not spam. (T)
+
+       - Watching you lable emails as spam or not spam.(E)
+
+       - The number(or fraction)of emails correctly classified as spam/not spam.(P)
+
+       - None of the above.
+
+
+
+**** Machine Learning Algorithms:
+    - Supervised learning 监督学习
+    - Unsupervised learning 无监督学习
+    - Reinforcement learning, recommender systems.
+
+**** Supervised Learning
+     First is an example of housing proce prediction. 监督学习又分为两
+     个小类：一个是，回归问题。这种问题会有一个连续值得输出。比如房价，
+     给定一个房子面积，预测其房价，这是一个连续的输出值；另一个是，分
+     类问题。分类问题是要预测一个离散的输出。比如对一个问题的，是还是
+     否，0，1，2。
+
+**** Unsupervised Learning
+We are given the data set and we're not told what to do with it and
+we're not told what each data point is. Instead we're just told, here is a data set.
+Can you find some structure in the data? Given this data set, an unsupervised learning
+algorithm might decide that the data lives in two differenc clusters.
+
+Unsupervised learning allows us to approach problems with little or no
+idea what our results should look like. We can derive structure from
+data where we don't necessarily know the effect of variables.
+
+The main way is automatically do something.
+
+*** Linear Regression with One Variable
+**** Model and Cost Function
+
+[[../img/model.png]]
+
+cost function J(theta)
+
+gradient descent()
+
+
+*** Linear Algebra Review
+
+** Week 2
+*** Multiple Features
+使用多个变量来预测 house price
+
+
+this is use single feature:
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_065153_2997tss.png]]
+
+next we will use multiple features:
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_065522_299762y.png]]
+
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_065717_2997sAC.png]]
+
+*** Mulitvariate Linear Regression: Gradient Descent
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_070036_2997TfU.png]]
+
+for previously(with only one feature)
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_070212_2997gpa.png]]
+
+*** Feature scaling
+
+This can make gradient descent more faster.
+
+idea: make sure feature are one a similar scale
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_070605_2997tzg.png]]
+
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_070933_299769m.png]]
+
+*** Learning Rate
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_071215_2997HIt.png]]
+
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_071610_2997GcC.png]]
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_071700_2997TmI.png]]
+
+*** Polynomial regression (多项式回归)
+we can create a new feature
+eg: Area(house price)
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_072427_29976Eb.png]]
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170422_072251_2997t6U.png]]
+
+*** Normal Equation
+    下面的公式是如何得来的：
+    [[../img/normal-equation.png]]
+
+    参考：
+    https://zhuanlan.zhihu.com/p/22757336
+    http://blog.xiangjiang.live/derivations-of-the-normal-equation/
+    还有一个很暴力的解法是，已知 X*θ=y 得到 X' X θ=X'y 得到 (X' X)^-1 * (X' X θ)=(X' X)^-1 *X'*y 得到 θ = (X' X)^-1 *X'*y
+
+    X · θ = Y
+    X_TX · θ = XTY
+    (X_TX)-1(XTX) · θ = (X_TX)-1X_TY
+    Eθ = (XTX)-1XTY
+    θ = (XTX)-1XTY
+
+*** Octave or Matlab
+
+some things need to know:
+1. Identity matrix 是指单位矩阵
+
+can reference this: http://www.cnblogs.com/Sinte-Beuve/p/6218355.html
+
+also can used in matlab:
+#+BEGIN_SRC matlab
+a = 1;
+disp(a);
+disp(sprintf('2 decimals: %0.2f', a));
+
+a = pi
+% now a is 3.1416
+format long
+& and now a is 3.141592653589793
+format short % a = 3.1416
+
+A = [1 2; 3 4; 5 6]
+V = [1 2 3]
+V = [1; 2; 3]
+
+v = 1:0.1:2
+% 1.0000    1.1000    1.2000    1.3000    1.4000    1.5000 1.6000    1.7000    1.8000    1.9000    2.0000
+
+v = 1:6
+% v =
+%
+%     1     2     3     4     5     6
+
+ones(1, 3)
+ans =
+
+     1     1     1
+     1     1     1
+
+2 * ones(2, 3)
+
+rand(3, 3)
+ans =
+
+    0.8147    0.9134    0.2785
+    0.9058    0.6324    0.5469
+    0.1270    0.0975    0.9575
+
+w = -6 + sqrt(10) * (randn(1, 10000))
+hist(w)
+
+eye(4)
+ans =
+
+     1     0     0     0
+     0     1     0     0
+     0     0     1     0
+     0     0     0     1
+
+help eye
+help hist
+doc hist
+
+inverse: inv(a)
+E = a * inv(a)
+
+To perform element-wise multiplication rather than matrix multiplication, use the .* operator:
+
+
+#+END_SRC
+
+** Week 3
+*** Logistic Regression - Classification
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_005440_45609iQm.png]]
+
+*** Logistic Regression Model
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_102030_456098ky.png]][[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_102152_45609IDO.png]]
+
+
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_104018_47254zUP.png]]
+
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_104243_47254AfV.png]]
+
+*** Cost function
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_105147_47254Npb.png]]
+
+*** Simplified cost function and Gradient Descent
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_110833_472540Hu.png]]
+
+
+Logistic regression const function is:
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_110930_47254zbD.png]]
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_111220_47254AmJ.png]]
+
+*** Advanced Optimization
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_111752_47254NwP.png]]
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_114453_47254a6V.png]]
+
+
+
+*** Multiclass classification
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_115009_47254nEc.png]]
+
+
+*** Regularization the problem of overfitting
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_115816_472540Oi.png]]
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_120042_47254BZo.png]]
+
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170428_122831_47254Oju.png]]
+
+** Week 4 Neural Networks: Representation
+
+*** Non-linear Hypotheses
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170506_133839_14457L5N.png]]
+
+
+*** Neurons and the Brain
+
+*** Neuron model: Logistic unit
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170506_141238_14457YDU.png]]
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170506_141604_14457yXg.png]]
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170506_142046_14457_hm.png]]
+
+
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170506_142502_14457Mss.png]]
+
+
+https://www.coursera.org/learn/machine-learning/supplement/Bln5m/model-representation-i
+没看很明白
+
+*** Neural Networks - Model Representation II
+[[file:/Users/yingdai/workspace/github/reading-list/reading-notes//imgs/20170506_143537_14457Z2y.png]]
