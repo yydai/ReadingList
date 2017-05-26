@@ -1,7 +1,6 @@
 * Reading List(From 2017)
 
 ** 在读
-   - 必然 凯文凯利
    - Machine Learning by Ng
    - Emacs Lisp 简明教程
 
@@ -12,6 +11,7 @@
     - 算法笔记 2月
     - Mastering Emacs 3月
     - Writing GNU Emacs Extensions 3月
+    - 必然 凯文凯利
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
