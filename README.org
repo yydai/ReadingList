@@ -11,10 +11,11 @@
     - 算法笔记 2月
     - Mastering Emacs 3月
     - Writing GNU Emacs Extensions 3月
-    - 必然 凯文凯利
+
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
+    - 必然（The Inevitable) 5月
 
 
 ** 待读：
