@@ -2,8 +2,6 @@
 
 ** 在读
    - Machine Learning by Ng
-   - Emacs Lisp 简明教程
-
 
 ** 2017年
 
@@ -11,12 +9,11 @@
     - 算法笔记 2月
     - Mastering Emacs 3月
     - Writing GNU Emacs Extensions 3月
-
+    - Emacs Lisp 简明教程（简单的过了遍） 5月
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
-    - 必然（The Inevitable) 5月
-
+	- 必然（The Inevitable) 5月
 
 ** 待读：
 
