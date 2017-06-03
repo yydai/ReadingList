@@ -2,6 +2,7 @@
 
 ** 在读
    - Machine Learning by Ng
+   - SQL必知必会
 
 ** 2017年
 
@@ -21,17 +22,17 @@
  2. C程序设计语言
  3. 数理统计学简史
  4. Python网络编程
- 5. SQL必知必会
- 6. 风格的要素
- 7. Effective Python
- 8. 编程语言实现模式
- 9. 禅与摩托车维修艺术
- 10. The definitive antlr4 reference
- 11. SICP
- 12. ES6标准入门(第二版) 阮一峰
- 13. A Programmer's Guide to Data Mining
- 14. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
- 15. 尽管去做-无压力工作的艺术(Get things done)
+ 5. 风格的要素
+ 6. Effective Python
+ 7. 编程语言实现模式
+ 8. 禅与摩托车维修艺术
+ 9. The definitive antlr4 reference
+ 10. SICP
+ 11. ES6标准入门(第二版) 阮一峰
+ 12. A Programmer's Guide to Data Mining
+ 13. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
+ 14. 尽管去做-无压力工作的艺术(Get things done)
+
 
 
 ============================================================
