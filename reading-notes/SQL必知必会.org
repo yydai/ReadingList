@@ -1,5 +1,10 @@
 * SQL 必知必会 (Sams Teach Yourself SQL in 10 minutes)
 
+#+BEGIN_QUOTE
+说明：后面到 19 节 以后，没有好好的总结，以后再完善。
+#+END_QUOTE
+
+
 ** 第一节 了解 SQL
     这一部分介绍数据库的基本知识。
 
@@ -105,7 +110,7 @@
     /* 这也是注释 */
     #+END_SRC
 
-** 第三课 排序检索数据
+** 第三节 排序检索数据
     这一部分介绍 =ORDER BY= 子句。
 
 *** 排序数据
@@ -147,7 +152,7 @@
 
     ASC 是与其相对的一个，但用的很少。因为默认就是升序排列的。
 
-** 第四课 过滤数据
+** 第四节 过滤数据
 
     这部分介绍 WHERE 的使用。
 
@@ -197,7 +202,7 @@
 	where prod_price is null;
 	#+END_SRC
 
-** 第五课 高级数据过滤
+** 第五节 高级数据过滤
 
 *** 组合 WHERE 子句
 	SQL 允许出现多个 where 子句，他们之间通过 AND 或者 OR 来连接。
@@ -261,3 +266,457 @@
 
 
 
+** 第七节 创建计算字段
+	这部分介绍什么是计算字段，如何创建。
+*** 计算字段
+	存储在数据库表中的数据一般不是应用程序所需要的格式，下面举几个例子。
+	- 需要显示公司名，同时还需要显示公司的地址，但这两个信息存储在不同的表中。
+    - 城市、州和邮政编码存储在不同的列中，但邮件标签打印程序需要把他们作为一个有恰当格式的字段检索出来。
+    - 需要根据表数据进行诸如总数、平均数计算。
+
+*** 拼接字段
+	拼接，就是将值联结到一起构成单个值。一般在PostgreSQL、Oracle等中使用 =||= 。
+	例如：
+
+	#+BEGIN_SRC sql
+	select vend_name || '(' || vend_country || ')'
+	from Vendors
+	order by vend_name ;
+	#+END_SRC
+
+	在 MySQL 或 MariaDB 中需要使用 Concat
+
+	#+BEGIN_SRC sql
+	select Concat(vend_name, '(', vend_country, ')')
+	from Vendors
+	order by vend_name ;
+	#+END_SRC
+
+	在 select 语句返回的输出中，我们看到会有很多的空格填充。为了正确返回格式化的数据，必须去掉这些空格。这时可以使用 RTRIM() 函数来完成。
+
+	#+BEGIN_SRC sql
+	select RTRIM(vend_name) || '(' || RTRIM(vend_country) || ')'
+	from Vendors
+	order by vend_name ;
+	#+END_SRC
+
+	大多数的 DBMS 都支持 RTRIM 函数（去掉字符串右边的空格），LTRIM 函数 （去掉左边空格），以及 TRIM。
+
+*** 使用别名
+	从前面的输出看出，我们没有给这种拼接字段一个名字。这样就导致无法再外部程序应用中引用这个列。这里我们可以使用 =AS= 来做。
+
+    #+BEGIN_SRC sql
+	select RTRIM(vend_name) || '(' || RTRIM(vend_country) || ')' as vend_title
+	from Vendors
+	order by vend_name ;
+	#+END_SRC
+
+	在很多的 DBMS 中 AS 是可选的，但是最好使用它，这被视为一条最佳实践。
+
+	别名的名字可以是一个单词，也可以是一个字符串。但是最好是用单词。
+
+*** 执行算术计算
+	#+BEGIN_SRC sql
+	select prod_id
+		   quantity * item_prices as expanded_price
+	from OrderItems
+	where order_num = 20008;
+	#+END_SRC
+
+	提示：如何测试计算
+	=SELECT= 语句为测试、检验函数和计算提供了很好的方法。例如
+
+	#+BEGIN_SRC sql
+	select 3 * 2; -- will return 6.
+	select Trim(' abc '); -- will return 'abc'.
+	select Now(); -- will return the current date and time.
+	#+END_SRC
+
+
+** 使用函数处理数据
+	这一部分，大体说一下函数的分类，具体的查相应的文档。对于每种 DBMS 这一部分差别很大。
+
+*** 函数
+	大多数都支持一下类型的函数。
+	- 文本处理，字符串
+    - 数值算术操作
+    - 日期和时间
+    - 返回 DBMS 正确使用的信息
+
+*** 文本处理函数
+	#+BEGIN_SRC sql
+	select UPPER(vend_name)
+	from xx
+	order by xx;
+	#+END_SRC
+
+*** 日期和时间处理
+	#+BEGIN_SRC sql
+	select order_num
+	from Orders
+	where YEAR(order_date) = 2012;
+	#+END_SRC
+
+*** 数值处理
+	| 函数   | 说明       |
+	|--------+------------|
+	| ABS()  | 返回绝对值 |
+	| COS()  | 返回余弦   |
+	| EXP()  | 返回指数   |
+	| PI()   | 返回圆周率 |
+	| SIN()  | 正弦       |
+	| SQRT() | 平方根     |
+	| TAN()  | 正切         |
+
+** 汇总数据
+	介绍 SQL 的聚集函数。
+
+*** 聚集函数
+	我们经常需要汇总数据而不是检索出来。例如：
+	- 确定表中的行数
+    - 获取行的和
+    - 找出表列中最大值、最下值、平均值
+
+	| 函数  | 说明     |
+	|-------+----------|
+	| AVG   | 平均     |
+	| COUNT | 行数   |
+	| MAX   | 最大值   |
+	| MIN   | 最小值   |
+	| SUM   | 列和       |
+
+	#+BEGIN_SRC sql
+	select AVG(prod_price) as avg_price
+	from Products;
+	#+END_SRC
+
+	对于 COUNT(*) 会对行的数目计算。而 COUNT(column) 会忽略 NULL 行。
+
+	#+BEGIN_SRC sql
+	select count(*)
+	from xxx;
+	#+END_SRC
+
+*** 聚集不同值
+	只包含不同值，指定 DISTINCT 参数。
+
+	#+BEGIN_SRC sql
+	select avg(distinct prod_price) as avg_price
+	from Products
+	where vend_id = 'DLL01';
+	#+END_SRC
+
+** 第十节 分组数据
+	这部分介绍使用 =GROUP BY= 和 =HAVING= 子句。
+
+*** 数据分组
+	使用分组可以将数据分为多个逻辑组，对每个组进行聚集计算。
+
+*** 创建分组
+	分组使用 =group by= 子句建立。
+
+	#+BEGIN_SRC sql
+	select vend_id, count(*) as num_prods
+	from products
+	group by vend_370830199210072237
+
+	#+END_SRC
+
+	group by 的规定具体看 P86 页。
+
+*** 过滤分组
+	我们可以看到where 的作用，但是有些 where 无法完成。where 过滤的是行，而不是分组。这里要用 having。
+
+	having 支持所有的 where 操作。
+
+	#+BEGIN_SRC sql
+	select cust_id, count(*) as orders
+	from Orders
+	group by cust_id
+	having count(*) >= 2;
+	#+END_SRC
+
+	关于 =where= 和 =having= 的区别。我们可以这样理解， =where= 在数据分组前进行过滤， =having= 在分组后过滤。
+
+	下面是同时使用这两个的例子。
+	#+BEGIN_SRC sql
+	select vend_id, count(*) as num_prods
+	from Products
+	where prod_price >= 4
+	group by vend_id
+	having count(*) >= 2;
+	#+END_SRC
+
+
+*** 分组与排序
+	分组不保证是排序后的，有些 DBMS 是，有些不是。我们要手动的加上 order by 来保证我们的要求。
+
+*** select 子句顺序
+
+	| 子句     | 说明 |
+	|----------+------|
+	| select   |      |
+	| from     |      |
+	| where    |      |
+	| group by |      |
+	| having   |      |
+	| order by |      |
+
+** 第十一节 使用子查询
+	介绍什么是子查询
+*** 子查询
+	嵌套在其他查询中的查询就是子查询。 一个例子：
+
+	#+BEGIN_SRC sql
+	select cust_name, cust_contact
+	from Customers
+	where cust_id in (select cust_id
+					  from Orders
+					  where order_num in (select order_num
+										  from OrderItems
+										  where prod_id = 'RGAN01'));
+	#+END_SRC
+
+	在使用子查询是我们要适当的缩进，方便阅读。不要嵌套太多子查询，影响性能。
+
+	作为子查询的 select 只能查询单个列。
+
+*** 作为计算字段使用子查询
+
+	#+BEGIN_SRC sql
+	select cust_name
+		   cust_state,
+		   (select count(*)
+			from Orders
+			where Orders.cust_id = Customers.cust_id) as orders -- 完全限定列名
+   	from Customers
+	order by cust_name ;
+	#+END_SRC
+
+** 第 12 节 联结表
+	什么是联结，为什么使用联结，如何使用。
+
+*** 联结
+	SQL 最强大的功能之一就是能在查询的执行中联结表。为了将数据分为多个表，更有效的管理，更方便的处理数据。下面看几个例子：
+
+	#+BEGIN_SRC sql
+	select vend_name, prod_name
+	from A, B
+	where A.vend_id = B.vend_id ;
+	#+END_SRC
+
+	没有联结条件的表关系返回结果为笛卡尔积。这种要尽量避免。
+
+	#+BEGIN_SRC sql
+	select vend_name, prod_name, prod_price
+	from A, B;
+	#+END_SRC
+
+*** 内联结
+	其实上面的联结就是内联结。也称为等值联结。下面是另一种写法：
+
+	#+BEGIN_SRC sql
+	select vend_name
+	from A inner join B
+	on A.vend_id = B.vend_id ;
+	#+END_SRC
+
+	注意不要联结过多的表，性能会非常差。
+
+	在前面的例子中，我们使用了子查询。但是那个例子可以使用内联结来做。
+
+** 第13节 创建高级联结
+	介绍如果使用表别名，如何对被联结的表使用聚集函数。
+
+*** 使用表别名
+	这个前面介绍过了。一个例子：
+
+	#+BEGIN_SRC sql
+	select cust_name, cust_contact
+	from A as a, B as b, C as c
+	where a.id = b.id and c.num = b.num and prod_id = 'xx';
+	#+END_SRC
+
+*** 使用不同类型的联结
+	这里有 自联结、自然联结和外联结
+
+**** 自联结
+	例子：
+	#+BEGIN_SRC sql
+	select c1.cust_id
+	from Customers as c1, Customers as c2
+	where c1.cust_name = c2.cust_name
+	and c1.cust_contact = 'xxx';
+	#+END_SRC
+
+	一般使用自联结要比使用子查询快。具体的还是应该实验一下。
+
+**** 自然联结
+
+**** 外联结
+	外联结分为左右外联结：
+
+	#+BEGIN_SRC sql
+	select A.id, B.nu
+	from A left outer join B
+	on A.id = B.id ;
+	#+END_SRC
+
+	left outer join 从 from 子句左边的表中选择所有的行，right 相反。
+
+** 第 14 节 组合查询
+	介绍 union 的使用。
+
+*** 使用 union
+	union 用来将多条 select 语句组合成一个结果集。
+
+	#+BEGIN_SRC sql
+	select cust_name, cust_contact
+	from A
+	where ....
+	union -- 组合
+	select cust_name, cust_contact
+	from A
+	where ....
+	#+END_SRC
+
+	需要注意的几点：
+	- union 需要有两条或以上的select语句组成。
+    - union 中的每个查询必须包含相同的列、表达式或聚集函数。
+
+	使用 order by 可以对查询结果排序。
+
+** 第 15 节 插入数据
+	这里举几个例子：
+
+	#+BEGIN_SRC sql
+	insert into table_name
+	values('aa', 'fss', NULL, 123);
+	#+END_SRC
+
+	注意 values 中数目要正确。
+
+*** 插入检索出的数据
+
+	#+BEGIN_SRC sql
+	insert into C(id, email, name, city, zip)
+	select id, email, name, city, zip from CustNew;
+	#+END_SRC
+
+	这里我们用到了 =insert select= 。
+
+*** 从一个表复制到另一个表
+
+	#+BEGIN_SRC sql
+	select *
+	into custCopy
+	from customers;
+	#+END_SRC
+
+
+** 第 16 节 更新和删除数据
+
+	更新数据：
+	#+BEGIN_SRC sql
+	update Customers
+	set email = 'dai92817@icloud.com', contact = 'hello'
+	where id = '37083019921007xxxx'
+	#+END_SRC
+
+	删除数据：
+	#+BEGIN_SRC sql
+	delete from C where id = '001';
+	#+END_SRC
+
+** 第 17 节 创建和操纵表
+
+	创建表
+	#+BEGIN_SRC sql
+	create table products(
+	id	char(10)	not null,
+	name char(10) 	not null default 'aa'
+	);
+	#+END_SRC
+
+	更新表：
+	#+BEGIN_SRC sql
+	alter table venders
+	add vend_phone char(20);
+
+	alter table venders
+	drop column vend_phone;
+	#+END_SRC
+
+	删除表：
+	#+BEGIN_SRC sql
+	drop table custCopy;
+	#+END_SRC
+
+
+** 第 18 节 使用视图
+	视图是虚拟的表。为什么使用视图呢？
+	- 重用 SQL 语句
+    - 简化复杂的 SQL 操作
+    - 使用表的一部分而不是整个表
+    - 保护数据
+    - 更改数据格式和表示
+
+*** 创建视图
+	#+BEGIN_SRC sql
+	create view test as
+	select name, contact, id
+	from C, O, Ord
+	where ...
+	#+END_SRC
+
+*** 利用视图格式化检索出的数据
+	#+BEGIN_SRC sql
+	create view test
+	select RTRIM(vend_name) || '(' || RTRIM(vend_country) || ')' as vend_title
+	from Vendors
+	order by vend_name ;
+
+	-- 下次我们可以这样了
+	select * from test;
+	#+END_SRC
+
+** 第 19 节 使用存储过程
+	介绍什么是存储过程，如何使用存储过程。
+
+	简单来说，存储过程就是为了以后使用而保存的一条或多条 SQL 语句。可以将其视为批文件。
+
+	为什么要使用呢？
+	- 简化复杂的操作。
+    - 因为不需要反复建立一系列处理步骤，保证数据的一致性。所有的开发人员都可以使用同一个存储过程。
+    - 存储过通常是编译过的，速度更快。
+
+	如何创建和使用，P169。
+
+** 第 20 节 管理事务处理
+	讲到如何利用 COMMIT 和 ROLLBACK 来管理事务处理。
+
+*** 事务处理
+	使用事务处理，通过确保成批的 SQL 操作要么完全执行，要么完全不执行，来维护数据库的完整性。
+
+** 第 21 节 使用游标
+	这部分讲到什么是游标，如何使用游标。
+
+** 第 22 节 高级 SQL 特性
+
+*** 约束
+
+**** 主键
+
+**** 外键
+
+**** 唯一约束
+
+**** 检查约束
+
+*** 索引
+
+*** 触发器
+
+
+** 样例表
+	我们可以在 [[http://www.forta.com/books/0672336073/][这里]] 获得。
