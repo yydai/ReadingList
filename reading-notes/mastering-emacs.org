@@ -1,5 +1,7 @@
 * Mastering Emacs 学习笔记
 
+[[file:./imgs/20170604_185915_47782HCw.png]]
+
 ** Chapter 1 First Steps
 *** install
 	You need first check the Emacs Version, use the following command:
@@ -67,7 +69,6 @@
 **** apropos
 
      - C-h a or M-x apropos-command
-
 
 ** Chapter 4 The Theory of Movement (This part need review someday)
 *** C-x s

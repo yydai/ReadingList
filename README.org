@@ -1,8 +1,8 @@
 * Reading List(From 2017)
 
 ** 在读
-   - Machine Learning by Ng
-   - SQL必知必会
+    - Machine Learning by Ng
+
 
 ** 2017年
 
@@ -11,6 +11,7 @@
     - Mastering Emacs 3月
     - Writing GNU Emacs Extensions 3月
     - Emacs Lisp 简明教程（简单的过了遍） 5月
+    - SQL必知必会 6月
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
