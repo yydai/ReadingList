@@ -1,7 +1,7 @@
 * Reading List(From 2017)
 
 ** 在读
-    - Machine Learning by Ng
+    - Machine Learning
 
 
 ** 2017年
@@ -12,12 +12,16 @@
     - Writing GNU Emacs Extensions 3月
     - Emacs Lisp 简明教程（简单的过了遍） 5月
     - SQL必知必会 6月
+    - The definitive antlr4 reference 6月
+    - SICP 前两章
 
 *** 社科文化
     - 异类(OUTLIERS) 1月
-	- 必然（The Inevitable) 5月
+    - 必然（The Inevitable) 5月
 *** 文学
-	- [[./reading-notes/解忧杂货店.org][解忧杂货店]] 6月
+    - [[./reading-notes/解忧杂货店.org][解忧杂货店]] 6月
+    - 了不起的盖茨比 6月
+    - 大明王朝 1566 6月
 
 ** 待读：
 
@@ -29,13 +33,11 @@
  6. Effective Python
  7. 编程语言实现模式
  8. 禅与摩托车维修艺术
- 9. The definitive antlr4 reference
- 10. SICP
- 11. ES6标准入门(第二版) 阮一峰
- 12. A Programmer's Guide to Data Mining
- 13. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
- 14. 尽管去做-无压力工作的艺术(Get things done)
-
+ 9. ES6标准入门(第二版) 阮一峰
+ 10. A Programmer's Guide to Data Mining
+ 11. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
+ 12. 尽管去做-无压力工作的艺术(Get things done)
+ 13. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
 
 
 ============================================================
