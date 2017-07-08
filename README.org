@@ -4,40 +4,42 @@
     - Machine Learning
 
 
-** 2017年
+** 2017 年
 
 *** 计算机
-    - 算法笔记 2月
-    - Mastering Emacs 3月
-    - Writing GNU Emacs Extensions 3月
-    - Emacs Lisp 简明教程（简单的过了遍） 5月
-    - SQL必知必会 6月
-    - The definitive antlr4 reference 6月
+    - 算法笔记 2 月
+    - Mastering Emacs 3 月
+    - Writing GNU Emacs Extensions 3 月
+    - Emacs Lisp 简明教程（简单的过了遍）5 月
+    - SQL 必知必会 6 月
+    - The definitive antlr4 reference 6 月
     - SICP 前两章
+    - Effective Python
 
 *** 社科文化
-    - 异类(OUTLIERS) 1月
-    - 必然（The Inevitable) 5月
+    - 异类(OUTLIERS) 1 月
+    - 必然（The Inevitable) 5 月
 *** 文学
-    - [[./reading-notes/解忧杂货店.org][解忧杂货店]] 6月
-    - 了不起的盖茨比 6月
-    - 大明王朝 1566 6月
+    - [[./reading-notes/解忧杂货店.org][解忧杂货店]] 6 月
+    - 了不起的盖茨比 6 月
+    - 大明王朝 1566 6 月
+*** 其他
+    - 风格的要素
 
 ** 待读：
 
  1. 深入理解计算机系统
- 2. C程序设计语言
+ 2. C 程序设计语言
  3. 数理统计学简史
- 4. Python网络编程
- 5. 风格的要素
- 6. Effective Python
- 7. 编程语言实现模式
- 8. 禅与摩托车维修艺术
- 9. ES6标准入门(第二版) 阮一峰
- 10. A Programmer's Guide to Data Mining
- 11. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
- 12. 尽管去做-无压力工作的艺术(Get things done)
- 13. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
+ 4. Python 网络编程
+ 5. 编程语言实现模式
+ 6. 禅与摩托车维修艺术
+ 7. ES6 标准入门(第二版) 阮一峰
+ 8. A Programmer's Guide to Data Mining
+ 9. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
+ 10. 尽管去做-无压力工作的艺术(Get things done)
+ 11. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
+
 
 
 ============================================================
