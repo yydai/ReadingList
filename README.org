@@ -39,6 +39,7 @@
  9. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
  10. 尽管去做-无压力工作的艺术(Get things done)
  11. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
+ 12. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
 
 
 
