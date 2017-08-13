@@ -3,7 +3,6 @@
 ** 在读
     - Machine Learning
 
-
 ** 2017 年
 
 *** 计算机
@@ -28,18 +27,22 @@
 
 ** 待读：
 
- 1. 深入理解计算机系统
- 2. C 程序设计语言
- 3. 数理统计学简史
- 4. Python 网络编程
- 5. 编程语言实现模式
- 6. 禅与摩托车维修艺术
- 7. ES6 标准入门(第二版) 阮一峰
- 8. A Programmer's Guide to Data Mining
- 9. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
- 10. 尽管去做-无压力工作的艺术(Get things done)
- 11. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
- 12. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
+ 1. Python 网络编程
+ 2. 数理统计学简史
+ 3. A Programmer's Guide to Data Mining
+ 4. 深入理解计算机系统
+ 5. C 程序设计语言
+ 6. 编程语言实现模式
+ 7. 禅与摩托车维修艺术
+ 8. The Design of Everyday Things
+ 9. ES6 标准入门(第二版) 阮一峰
+ 10. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
+ 11. 尽管去做-无压力工作的艺术(Get things done)
+ 12. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
+ 13. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
+ 14. 建筑的永恒之道 & 建筑模式语言（上下）
+ 15. [[https://book.douban.com/top250?start=1][豆瓣 top 250]]
+
 
 
 
