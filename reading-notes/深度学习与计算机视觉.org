@@ -1,0 +1,245 @@
+* resources
+    地址：http://study.163.com/course/courseLearn.htm?courseId=1003223001#/learn/video?lessonId=1003659005&courseId=1003223001
+    http://cs231n.github.io/
+    https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv
+
+* Module 0: Preparation
+
+** Python
+
+    #+BEGIN_SRC python
+    def quicksort(arr):
+        if len(arr) < 1:
+            return arr
+        pivot = arr[len(arr) // 2]
+        left = [x for x in arr if x < pivot]
+        middle = [x for x in arr if x = pivot]
+        right = [x for x in arr if x > pivot]
+        return quicksort(left) + middle + right
+
+    print(quicksort([2, 4, 10, 1, 2, 5]))
+    #+END_SRC
+
+*** basic data types
+
+*** containers
+
+*** lists
+
+*** dictionaries
+
+*** sets
+
+*** tuples
+    tuples 和 list 相似。前者可以用于 dict 的 key，而 list 不可以
+
+*** functions
+
+*** classes
+
+** Numpy
+    Numpy 主要用于科学计算。它的主要功能是处理数组。
+
+*** arrays
+    #+BEGIN_SRC python
+    a = np.zeros((2,2))   # Create an array of all zeros
+    print(a)              # Prints "[[ 0.  0.]
+                          #          [ 0.  0.]]"
+    b = np.ones((1,2))    # Create an array of all ones
+    print(b)              # Prints "[[ 1.  1.]]"
+    c = np.full((2,2), 7)  # Create a constant array
+    print(c)               # Prints "[[ 7.  7.]
+                           #          [ 7.  7.]]"
+    d = np.eye(2)         # Create a 2x2 identity matrix
+    print(d)              # Prints "[[ 1.  0.]
+                          #          [ 0.  1.]]"
+    e = np.random.random((2,2))  # Create an array filled with random values
+    print(e)                     #
+    #+END_SRC
+
+*** Array indexing
+    #+BEGIN_SRC python
+    a = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
+    # [2,3][6, 7]
+    b = a[:2, 1:3]
+    #+END_SRC
+
+*** datatypes
+    #+BEGIN_SRC python
+    x = np.array([1, 2])
+    print(x.dtype) #prints "int 64"
+    #+END_SRC
+
+*** array math
+    #+BEGIN_SRC python
+    x = np.array([[1, 2], [3, 4]])
+    print(np.sum(x))
+    print(np.sum(x, axis=0)) # print echo column sum
+    print(np.sum(x, axis=1)) # print echo row sum
+    #+END_SRC
+
+*** broadcasting
+
+*** Doc
+    see here：
+
+** Scipy
+    Scipy build on the numpy.
+
+*** Image operations
+    Scipy 提供了很多的方法去处理图像。
+    #+BEGIN_SRC python
+    from scipy.misc import imread, imsave, imresize
+    # Read an JPEG image into a numpy array
+    img = imread('assets/cat.jpg')
+    print(img.dtype, img.shape)  # Prints "uint8 (400, 248, 3)"
+
+    # We can tint the image by scaling each of the color channels
+    # by a different scalar constant. The image has shape (400, 248, 3);
+    # we multiply it by the array [1, 0.95, 0.9] of shape (3,);
+    # numpy broadcasting means that this leaves the red channel unchanged,
+    # and multiplies the green and blue channels by 0.95 and 0.9
+    # respectively.
+    img_tinted = img * [1, 0.95, 0.9]
+
+    # Resize the tinted image to be 300 by 300 pixels.
+    img_tinted = imresize(img_tinted, (300, 300))
+
+    # Write the tinted image back to disk
+    imsave('assets/cat_tinted.jpg', img_tinted)
+    #+END_SRC
+
+
+*** Distance between points
+    Scipy 提供了一些有用的函数去处理点之间的距离。
+    例如下面计算欧几里得距离。
+    #+BEGIN_SRC python
+    Import numpy as np
+    from scipy.spatial.distance import pdist, squareform
+
+    # Create the following array where each row is a point in 2D space:
+    # [[0 1]
+    #  [1 0]
+    #  [2 0]]
+    x = np.array([[0, 1], [1, 0], [2, 0]])
+    print(x)
+
+    # Compute the Euclidean distance between all rows of x.
+    # d[i, j] is the Euclidean distance between x[i, :] and x[j, :],
+    # and d is the following array:
+    # [[ 0.          1.41421356  2.23606798]
+    #  [ 1.41421356  0.          1.        ]
+    #  [ 2.23606798  1.          0.        ]]
+    d = squareform(pdist(x, 'euclidean'))
+    print(d)
+    #+END_SRC
+
+** Matplotlib
+
+*** Plotting
+    #+BEGIN_SRC python
+    import numpy as np
+    import matplotlib.pyplot as plt
+    x = np.arange(0, 3*np.pi, 0.1)
+    y = np.sin(x)
+    plt.plot(x, y)
+    plt.show()
+    #+END_SRC
+
+    #+ATTR_HTML: :width 100%
+    [[file:./imgs/20170816_182109_4785404x.png]]
+
+
+    #+BEGIN_SRC python
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # Compute the x and y coordinates for points on sine and cosine curves
+    x = np.arange(0, 3 * np.pi, 0.1)
+    y_sin = np.sin(x)
+    y_cos = np.cos(x)
+
+    # Plot the points using matplotlib
+    plt.plot(x, y_sin)
+    plt.plot(x, y_cos)
+    plt.xlabel('x axis label')
+    plt.ylabel('y axis label')
+    plt.title('Sine and Cosine')
+    plt.legend(['Sine', 'Cosine'])
+    plt.show()
+    #+END_SRC
+
+    结果如下图。
+    #+ATTR_HTML: :width 100%
+    [[file:./imgs/20170816_182630_47854mCB.png]]
+
+
+*** subplots
+
+*** images
+    we can use the imshow function to show images.
+    #+BEGIN_SRC python
+    import numpy as np
+    from scipy.misc import imread, imresize
+    import matplotlib.pyplot as plt
+
+    img = imread('assets/cat.jpg')
+    img_tinted = img * [1, 0.95, 0.9]
+
+    # Show the original image
+    plt.subplot(1, 2, 1)
+    plt.imshow(img)
+
+    # Show the tinted image
+    plt.subplot(1, 2, 2)
+
+    # A slight gotcha with imshow is that it might give strange results
+    # if presented with data that is not uint8. To work around this, we
+    # explicitly cast the image to uint8 before displaying it.
+    plt.imshow(np.uint8(img_tinted))
+    plt.show()
+    #+END_SRC
+
+** IPython Tutorial
+* 计算机视觉历史介绍 上
+    介绍了猫看任何图片没有反应，但是在切换幻灯片的过程中，却能刺激到它。
+* 计算机视觉历史介绍 中
+    David Marr 视觉是分层的。第一层应该是边缘结构。
+    Generalized Cylinder 模型。主旨整个世界都是由简单的形状组成。
+    多样性
+    感知分组是视觉领域最为重要的问题。我们看一个物体不会是看到像素这个级别，而是会把像素分类。
+    这个问题现在并没有完美的解决。
+
+    有一个非常赞的成果叫 Viola Jones Face Detector。
+    https://en.wikipedia.org/wiki/Viola%E2%80%93Jones_object_detection_framework
+    https://allenlu2007.wordpress.com/2016/05/05/%E4%BA%BA%E8%87%89%E5%81%B5%E6%B8%AC-face-detection-%E7%AE%97%E6%B3%95/
+    http://www.vision.caltech.edu/html-files/EE148-2005-Spring/pprs/viola04ijcv.pdf
+
+    在 2012 年的 ImageNet 比赛中，卷积神经网络的使用使得图像识别的成功率大大提高。这成了深度学习兴起的开端。
+
+    图像分类，物体检测。
+
+    CNN 卷积神经网络只是深度学习框架的一种。
+
+* Image Classification Pipeline [[http://cs231n.github.io/classification/][notes]]
+
+** An Image classifier 图像分类器
+    图像分类就是通过输入一个图片然后预测一个对应的标签。
+    图像通过 3 维表示，L * W * 3。分别表示长宽，其中的 3 表示 RGB 中 3 基色。
+    这种问题不是很容易解决，其中面临很多的挑战。
+    - 不同视角下的影响
+    - 体型或大小的不同
+    - 各种的变形。例如，猫的例子。
+    - 物体的一部分可见，其他被遮挡
+    - 光线的影响
+    - 背景的影响
+    - 一个大的物体又会有几个小的分类组成
+
+    这个问题，如果我们通过传统的方式，很难找到一个非常完美的方式去实现。其中，一个可能的做法是去识别物体的边界，然后去判断，但是如果换了一个物体又得重新做。
+    现在有一个比较好的方式。
+
+*** 数据驱动
+    这个过程的步骤如下：
+    - 收集图片及其标签的数据集
+    - 使用机器学习去训练分类器
+    - 计算新图像的分类
