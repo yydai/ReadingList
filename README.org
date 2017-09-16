@@ -41,10 +41,13 @@
  12. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
  13. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
  14. 建筑的永恒之道 & 建筑模式语言（上下）
- 15. [[https://book.douban.com/top250?start=1][豆瓣 top 250]]
- 16. debug hacks
- 17. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
- 18. The Art of Debugging with GDB, DDD, and Eclipse
+ 15. debug hacks
+ 16. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
+ 17. The Art of Debugging with GDB, DDD, and Eclipse
+ 18. 集体智慧编程 Programming Collective Intelligence
+ 19. 机器学习 Machine Learning 周志华
+
+
 
 
 
