@@ -2,6 +2,9 @@
 
 ** 在读
     - Machine Learning
+    - 集体智慧编程 Programming Collective Intelligence
+    - Linux from scratch (Linux 课程)
+    - Hadoop 权威指南
 
 ** 2017 年
 
@@ -44,13 +47,7 @@
  15. debug hacks
  16. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
  17. The Art of Debugging with GDB, DDD, and Eclipse
- 18. 集体智慧编程 Programming Collective Intelligence
- 19. 机器学习 Machine Learning 周志华
-
-
-
-
-
+ 18. 机器学习 Machine Learning 周志华
 
 
 
