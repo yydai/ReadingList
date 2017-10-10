@@ -3,7 +3,6 @@
 ** 在读
     - Machine Learning
     - 集体智慧编程 Programming Collective Intelligence
-    - Linux from scratch (Linux 课程)
     - Hadoop 权威指南
 
 ** 2017 年
@@ -17,6 +16,7 @@
     - The definitive antlr4 reference 6 月
     - SICP 前两章
     - Effective Python
+    - Linux from scratch (Linux 课程) 9 月
 
 *** 社科文化
     - 异类(OUTLIERS) 1 月
