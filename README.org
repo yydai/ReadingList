@@ -48,6 +48,17 @@
  16. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
  17. The Art of Debugging with GDB, DDD, and Eclipse
  18. 机器学习 Machine Learning 周志华
+ 19. 思考，快与慢
+ 20. 与神对话
+ 21. 平凡的世界
+ 22. 活着
+ 23. 动物庄园
+ 24. 魔鬼经济学
+ 25. 如何阅读一本书
+
+
+
+
 
 
 
