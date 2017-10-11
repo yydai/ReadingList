@@ -4,7 +4,7 @@
     - Machine Learning
     - 集体智慧编程 Programming Collective Intelligence
     - Hadoop 权威指南
-
+    - 禅与摩托车维修艺术
 ** 2017 年
 
 *** 计算机
@@ -36,30 +36,24 @@
  4. 深入理解计算机系统
  5. C 程序设计语言
  6. 编程语言实现模式
- 7. 禅与摩托车维修艺术
- 8. The Design of Everyday Things
- 9. ES6 标准入门(第二版) 阮一峰
- 10. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
- 11. 尽管去做-无压力工作的艺术(Get things done)
- 12. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
- 13. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
- 14. 建筑的永恒之道 & 建筑模式语言（上下）
- 15. debug hacks
- 16. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
- 17. The Art of Debugging with GDB, DDD, and Eclipse
- 18. 机器学习 Machine Learning 周志华
- 19. 思考，快与慢
- 20. 与神对话
- 21. 平凡的世界
- 22. 活着
- 23. 动物庄园
- 24. 魔鬼经济学
- 25. 如何阅读一本书
-
-
-
-
-
+ 7. The Design of Everyday Things
+ 8. ES6 标准入门(第二版) 阮一峰
+ 9. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
+ 10. 尽管去做-无压力工作的艺术(Get things done)
+ 11. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
+ 12. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
+ 13. 建筑的永恒之道 & 建筑模式语言（上下）
+ 14. debug hacks
+ 15. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
+ 16. The Art of Debugging with GDB, DDD, and Eclipse
+ 17. 机器学习 Machine Learning 周志华
+ 18. 思考，快与慢
+ 19. 与神对话
+ 20. 平凡的世界
+ 21. 活着
+ 22. 动物庄园
+ 23. 魔鬼经济学
+ 24. 如何阅读一本书
 
 
 ============================================================
