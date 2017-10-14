@@ -3,7 +3,6 @@
 ** 在读
     - Machine Learning
     - 集体智慧编程 Programming Collective Intelligence
-    - Hadoop 权威指南
 
 ** 2017 年
 
@@ -17,6 +16,7 @@
     - SICP 前两章
     - Effective Python
     - Linux from scratch (Linux 课程) 9 月
+    - Hadoop 权威指南 部分 10 月
 
 *** 社科文化
     - 异类(OUTLIERS) 1 月
