@@ -5,7 +5,6 @@
     - 集体智慧编程 Programming Collective Intelligence
 
 ** 2017 年
-
 *** 计算机
     - 算法笔记 2 月
     - Mastering Emacs 3 月
@@ -28,6 +27,7 @@
     - 大明王朝 1566 6 月
 *** 其他
     - 风格的要素
+    - 尽管去做-无压力工作的艺术(Get things done) 11 月
 
 ** 待读：
 
@@ -40,21 +40,20 @@
  7. The Design of Everyday Things
  8. ES6 标准入门(第二版) 阮一峰
  9. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
- 10. 尽管去做-无压力工作的艺术(Get things done)
- 11. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
- 12. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
- 13. 建筑的永恒之道 & 建筑模式语言（上下）
- 14. debug hacks
- 15. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
- 16. The Art of Debugging with GDB, DDD, and Eclipse
- 17. 机器学习 Machine Learning 周志华
- 18. 思考，快与慢
- 19. 与神对话
- 20. 平凡的世界
- 21. 活着
- 22. 动物庄园
- 23. 魔鬼经济学
- 24. 如何阅读一本书
+ 10. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
+ 11. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
+ 12. 建筑的永恒之道 & 建筑模式语言（上下）
+ 13. debug hacks
+ 14. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
+ 15. The Art of Debugging with GDB, DDD, and Eclipse
+ 16. 机器学习 Machine Learning 周志华
+ 17. 思考，快与慢
+ 18. 与神对话
+ 19. 平凡的世界
+ 20. 活着
+ 21. 动物庄园
+ 22. 魔鬼经济学
+ 23. 如何阅读一本书
 
 
 ============================================================
