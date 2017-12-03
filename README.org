@@ -3,7 +3,7 @@
 ** 在读
     - Machine Learning
     - 集体智慧编程 Programming Collective Intelligence
-    - Effective Java
+
 
 ** 2017 年
 *** 计算机
@@ -17,15 +17,18 @@
     - Effective Python
     - Linux from scratch (Linux 课程) 9 月
     - Hadoop 权威指南 部分 10 月
+    - Learning Spark 11 月
 
 *** 社科文化
     - 异类(OUTLIERS) 1 月
     - 必然（The Inevitable) 5 月
     - 禅与摩托车维修艺术 10 月
+
 *** 文学
     - [[./reading-notes/解忧杂货店.org][解忧杂货店]] 6 月
     - 了不起的盖茨比 6 月
     - 大明王朝 1566 6 月
+
 *** 其他
     - 风格的要素
     - 尽管去做-无压力工作的艺术(Get things done) 11 月
