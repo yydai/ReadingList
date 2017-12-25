@@ -3,6 +3,8 @@
 ** 在读
     - Machine Learning
     - 集体智慧编程 Programming Collective Intelligence
+    - 数据仓库（课程需要读）
+
 
 
 ** 2017 年
@@ -18,6 +20,7 @@
     - Linux from scratch (Linux 课程) 9 月
     - Hadoop 权威指南 部分 10 月
     - Learning Spark 11 月
+    - Spark 高级数据分析 12 月
 
 *** 社科文化
     - 异类(OUTLIERS) 1 月
@@ -61,5 +64,7 @@
 
 
 ============================================================
-
 阅读范围限制一两个专业领域，在一段时间内集中攻克，有利于个人专业素质的提高。
+- 编程
+- 设计
+- 建筑
