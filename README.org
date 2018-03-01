@@ -4,12 +4,15 @@
     - Machine Learning
     - 集体智慧编程 Programming Collective Intelligence
     - 数据仓库（课程需要读）
+    - 小狗钱钱
 
 ** 2018 年
 *** 文学
     - 与神对话 2 月
     - 月亮与六便士 2 月
     - 动物庄园 2 月
+    - 悉达多 2 月
+
 
 ** 2017 年
 *** 计算机
