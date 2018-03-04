@@ -4,7 +4,8 @@
     - Machine Learning
     - 集体智慧编程 Programming Collective Intelligence
     - 数据仓库（课程需要读）
-    - 小狗钱钱
+    - 统计学习方法
+
 
 ** 2018 年
 *** 文学
@@ -15,8 +16,6 @@
 *** 理财
     - 小狗钱钱 3 月
     - 富爸爸，穷爸爸 3 月
-
-
 
 
 ** 2017 年
