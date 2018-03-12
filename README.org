@@ -5,6 +5,7 @@
     - 集体智慧编程 Programming Collective Intelligence
     - 数据仓库（课程需要读）
     - 统计学习方法
+    - 数理统计学简史
 
 
 ** 2018 年
@@ -48,28 +49,32 @@
     - 尽管去做-无压力工作的艺术(Get things done) 11 月
 
 ** 待读：
-
- 1. Python 网络编程
- 2. 数理统计学简史
- 3. A Programmer's Guide to Data Mining
+ 1. C 程序设计语言
+ 2. Python 网络编程
+ 3. A Programmer's Guide to Data Mining P
  4. 深入理解计算机系统
- 5. C 程序设计语言
- 6. 编程语言实现模式
- 7. The Design of Everyday Things
- 8. ES6 标准入门(第二版) 阮一峰
- 9. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
- 10. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
- 11. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
- 12. 建筑的永恒之道 & 建筑模式语言（上下）
- 13. debug hacks
- 14. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
- 15. The Art of Debugging with GDB, DDD, and Eclipse
- 16. 机器学习 Machine Learning 周志华
- 17. 思考，快与慢
- 18. 平凡的世界
- 19. 活着
- 20. 魔鬼经济学
- 21. 如何阅读一本书
+ 5. 编程语言实现模式
+ 6. The Design of Everyday Things
+ 7. ES6 标准入门(第二版) 阮一峰
+ 8. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
+ 9. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
+ 10. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
+ 11. 建筑的永恒之道 & 建筑模式语言（上下）
+ 12. debug hacks
+ 13. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
+ 14. The Art of Debugging with GDB, DDD, and Eclipse
+ 15. 思考，快与慢
+ 16. 平凡的世界
+ 17. 活着
+ 18. 魔鬼经济学
+ 19. 如何阅读一本书
+ 20. 程序设计实践
+ 21. 编程珠玑重读 P
+ 22. UNIX 编程环境
+ 23. The Elements of Programming Style, 2nd Edition
+ 24. UNIX 编程艺术
+ 25. 代码大全
+ 26. 精通正则表达式 P
 
 
 ==========================================================
