@@ -76,6 +76,10 @@
  25. 代码大全
  26. 精通正则表达式 P
  27. python 数据处理 p
+ 28. Pattern Recognition and Machine Learning
+ 29. Hands on Machine Learning with Scikit-Learn & TensorFlow
+ 30. Machine Learning: A Probabilistic Perspective
+ 31. 推荐系统实践
 
 
 
