@@ -1,4 +1,4 @@
-* Reading List(From 2017)
+* Reading List
 
 ** 在读
     - 机器学习实战
