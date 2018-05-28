@@ -85,12 +85,17 @@
  32. Machine Learning: A Probabilistic Perspective
  33. 推荐系统实践
  34. star scheme
+ 35. 平凡的世界
+ 36. 毛泽东选集
 
 ** 想学习的课程
     - CS161: Design and Analysis of Algorithms
+    - https://cs61a.org/
+    - CSE341: Programming Languages
 
 ** 读源码
     - [[https://github.com/emacsrocks/org-static-blog/blob/master/org-static-blog.el][org static blog]]
+    - [[https://github.com/google/leveldb][leveldb]]: http://leveldb-handbook.readthedocs.io/zh/latest/index.html
 
 ** 准备撸或正在撸的项目
     - 实现机器学习基本算法
