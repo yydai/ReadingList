@@ -19,6 +19,7 @@
     - Machine Learning 周志华 （做为工具书）
     - 集体智慧编程 Programming Collective Intelligence（部分，有时间再读）
     - 推荐系统实践 （推荐方面的好书，需要多读几次消化一下）4 月
+    - Apache Hive Cookbook 8 月 3 日
 
 
 ** 2017 年
@@ -92,6 +93,10 @@
     - CS161: Design and Analysis of Algorithms
     - https://cs61a.org/
     - CSE341: Programming Languages
+    - CS224n: [[http://web.stanford.edu/class/cs224n/][homepage]]
+    - http://db.csail.mit.edu/6.830/
+    - http://nil.csail.mit.edu/6.824/2015/schedule.html
+    - https://pdos.csail.mit.edu/6.828/2014/schedule.html
 
 ** 读源码
     - [[https://github.com/emacsrocks/org-static-blog/blob/master/org-static-blog.el][org static blog]]
