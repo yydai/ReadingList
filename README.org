@@ -3,7 +3,7 @@
 ** 在读
     - 机器学习实战
     - 概率论与数理统计 陈希孺
-
+    - Getting Started with tensorflow
 
 ** 2018 年
 *** 文学
@@ -11,6 +11,7 @@
     - 月亮与六便士 2 月
     - 动物庄园 2 月
     - 悉达多 2 月
+    - 活着 6 月
 *** 理财
     - 小狗钱钱 3 月
     - 富爸爸，穷爸爸 3 月
@@ -20,6 +21,7 @@
     - 集体智慧编程 Programming Collective Intelligence（部分，有时间再读）
     - 推荐系统实践 （推荐方面的好书，需要多读几次消化一下）4 月
     - Apache Hive Cookbook 8 月 3 日
+    - A Programmer's Guide to Data Mining 8 月 17 日 太过基础了，没基础可以看下
 
 
 ** 2017 年
@@ -56,38 +58,36 @@
  2. Python 网络编程
  3. Python 源码分析
  4. 数理统计学简史
- 5. A Programmer's Guide to Data Mining P
- 6. 深入理解计算机系统
- 7. 编程语言实现模式
- 8. The Design of Everyday Things
- 9. ES6 标准入门(第二版) 阮一峰
- 10. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
- 11. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
- 12. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
- 13. 建筑的永恒之道 & 建筑模式语言（上下）
- 14. debug hacks
- 15. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
- 16. The Art of Debugging with GDB, DDD, and Eclipse
- 17. 思考，快与慢
- 18. 平凡的世界
- 19. 活着
- 20. 魔鬼经济学
- 21. 如何阅读一本书
- 22. 程序设计实践
- 23. 编程珠玑重读 P
- 24. UNIX 编程环境
- 25. The Elements of Programming Style, 2nd Edition
- 26. UNIX 编程艺术
- 27. 代码大全
- 28. 精通正则表达式 P
- 29. python 数据处理 p
- 30. Pattern Recognition and Machine Learning
- 31. Hands on Machine Learning with Scikit-Learn & TensorFlow
- 32. Machine Learning: A Probabilistic Perspective
- 33. 推荐系统实践
- 34. star scheme
- 35. 平凡的世界
- 36. 毛泽东选集
+ 5. 深入理解计算机系统
+ 6. 编程语言实现模式
+ 7. The Design of Everyday Things
+ 8. ES6 标准入门(第二版) 阮一峰
+ 9. 奇特的一生（时间管理 柳比歇夫） [[http://www.mifengtd.cn/articles/lyubishchev-time-management.html][reference]]
+ 10. [[http://www.ituring.com.cn/book/1143][开源软件架构]]
+ 11. [[http://ds26gte.github.io/tyscheme/index-Z-H-1.html][Teach Yourself Scheme in Fixnum Days]]
+ 12. 建筑的永恒之道 & 建筑模式语言（上下）
+ 13. debug hacks
+ 14. Autotools: A Practioner's Guide to GNU Autoconf, Automake, and Libtool ([[https://github.com/zhangsen/doc-autotools-in-practice/blob/master/autotools.rst][*]])
+ 15. The Art of Debugging with GDB, DDD, and Eclipse
+ 16. 思考，快与慢
+ 17. 平凡的世界
+ 18. 魔鬼经济学
+ 19. 如何阅读一本书
+ 20. 程序设计实践
+ 21. 编程珠玑重读 P
+ 22. UNIX 编程环境
+ 23. The Elements of Programming Style, 2nd Edition
+ 24. UNIX 编程艺术
+ 25. 代码大全
+ 26. 精通正则表达式 P
+ 27. python 数据处理 p
+ 28. Pattern Recognition and Machine Learning
+ 29. Hands on Machine Learning with Scikit-Learn & TensorFlow
+ 30. Machine Learning: A Probabilistic Perspective
+ 31. star scheme
+ 32. 平凡的世界
+ 33. 毛泽东选集
+
 
 ** 想学习的课程
     - CS161: Design and Analysis of Algorithms
