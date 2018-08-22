@@ -4,6 +4,7 @@
     - 机器学习实战
     - 概率论与数理统计 陈希孺
     - Getting Started with tensorflow
+    - 精通正则表达式
 
 ** 2018 年
 *** 文学
