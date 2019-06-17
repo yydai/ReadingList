@@ -99,15 +99,16 @@
  21. 编程珠玑重读 P
  22. UNIX 编程环境
  23. The Elements of Programming Style, 2nd Edition
- 25. 代码大全
- 26. 精通正则表达式 P
- 27. python 数据处理 p
- 28. Pattern Recognition and Machine Learning
- 29. Hands on Machine Learning with Scikit-Learn & TensorFlow
- 30. Machine Learning: A Probabilistic Perspective
- 31. star scheme
- 32. 平凡的世界
- 33. 毛泽东选集
+ 24. 代码大全
+ 25. 精通正则表达式 P
+ 26. python 数据处理 p
+ 27. Pattern Recognition and Machine Learning
+ 28. Hands on Machine Learning with Scikit-Learn & TensorFlow
+ 29. Machine Learning: A Probabilistic Perspective
+ 30. star scheme
+ 31. 平凡的世界
+ 32. 毛泽东选集
+ 33. 练习的心态
 
 ** 想学习的课程
     - CS161: Design and Analysis of Algorithms
