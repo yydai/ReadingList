@@ -11,6 +11,7 @@
 
 *** 技术（5-10）
     - UNIX 编程艺术 http://www.faqs.org/docs/artu/index.html reading
+    - https://jakevdp.github.io/PythonDataScienceHandbook/index.html
 
 *** 文学
     科幻类
